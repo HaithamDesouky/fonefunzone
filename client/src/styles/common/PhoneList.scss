@@ -1,0 +1,21 @@
+.phone-list-container {
+  display: flex;
+  padding: 0 15%;
+  justify-content: space-around;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+
+    li {
+      margin: 0 10px 25px 10px;
+    }
+
+    img {
+      cursor: pointer;
+    }
+  }
+}
