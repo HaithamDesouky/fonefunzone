@@ -38,7 +38,7 @@ npm install
 npm run dev
 ```
 
-6. Enjoy this trainwreck on an application!
+6. Enjoy this trainwreck of an application!
 
 ## Server-side
 
