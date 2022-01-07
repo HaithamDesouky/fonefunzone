@@ -14,7 +14,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [process.env.CLIENT_APP_ORIGIN, 'https://hoppscotch.io'], // *
+    origin: ['http://localhost:3000', 'https://hoppscotch.io'], // *
     credentials: true // *
   })
 );
@@ -41,8 +41,18 @@ app.use(
 );
 
 app.use('/', phoneRouter);
-
 app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+  );
+
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-Requested-With,content-type'
+  );
+  res.setHeader('Access-Control-Allow-Credentials', true);
   next(createError(404));
 });
 
