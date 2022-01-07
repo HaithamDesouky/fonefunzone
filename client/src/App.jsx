@@ -31,6 +31,7 @@ class App extends Component {
             />
             <Route
               path="/phone/create"
+              exact
               component={PhoneCreateView}
             />
             <Route path="/phone/:id" component={PhoneView} exact />

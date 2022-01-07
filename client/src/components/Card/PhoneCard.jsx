@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles'
+import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -68,10 +69,12 @@ export default function PhoneCard({ phone, expandDisabled, width }) {
         image={phone.photo ? phone.photo : mysteryPhone}
         alt={phone.title}
         onClick={() => history.push(`/phone/${phone._id}`)}></CardMedia>
-
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {phone.description}
+          {phone.description.substring(0, 41) + '...'}
+        </Typography>
+        <Typography >
+          <Link className="phone-card-link" to={`/phone/${phone._id}`}> Read more</Link>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -81,42 +84,7 @@ export default function PhoneCard({ phone, expandDisabled, width }) {
         <IconButton aria-label="share" onClick={share}>
           <ShareIcon />
         </IconButton>
-        {!expandDisabled &&
-          <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>}
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Price:</Typography>
-          <Typography paragraph>
-            {phone.price}
-          </Typography>
-          <Typography paragraph>
-            Ram:
-          </Typography>
-          <Typography paragraph>
-            {phone.ram}
-          </Typography>
-          <Typography paragraph>
-            Color:
-          </Typography>
-          <Typography paragraph>
-            {phone.color}
-          </Typography>
-          <Typography>
-            Manufacturer:
-          </Typography>
-          <Typography paragraph>
-            {phone.manufacturer}
-          </Typography>
-        </CardContent>
-      </Collapse>
     </Card>
   );
 }

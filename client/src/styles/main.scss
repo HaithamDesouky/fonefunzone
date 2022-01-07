@@ -125,3 +125,16 @@ button {
     transform: translate(0);
   }
 }
+
+.phone-card-link {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  color: #d7b065;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+
+  &:hover {
+    color: black;
+    transition: all 0.2s ease-out;
+  }
+}

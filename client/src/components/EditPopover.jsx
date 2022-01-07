@@ -2,8 +2,6 @@ import React from 'react';
 import PhoneForm from './PhoneForm/PhoneForm'
 
 const EditPopover = ({ editingActive, phone, handleEditPhoneSubmission }) => {
-
-
   return (
     <div class="modal-background">
       <div class="edit-phone-dialog">
