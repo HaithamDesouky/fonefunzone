@@ -4,7 +4,7 @@ This is an application is divided between a client-side ReactJS application and 
 
 The serverside is very basic, utilising the usual REST API methods.
 
-The client side is made with React - with both class components to show my familiarity with how React was written before and more up to date with functional components with hooks.
+The client side is made with React - with both class components to show my familiarity with how React was written before and more up to date with functional components with hooks. Styling was not the focus of the project, hence the basic UI.
 
 The database is using mongodb atlas and the photo uploading using cloudinary.
 
