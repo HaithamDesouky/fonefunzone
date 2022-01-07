@@ -1,5 +1,7 @@
 # FONEFUNZONE
 
+FONEFUNZONE is a concept for a social media application for people to share their wacky, fun phones - which allows users to create, update, delete and see other people's phones.
+
 This is an application is divided between a client-side ReactJS application and a server-side Node.js application.
 
 The serverside is very basic, utilising the usual REST API methods.
