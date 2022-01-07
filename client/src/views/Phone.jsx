@@ -8,6 +8,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import mysteryPhone from './../images/mystery.png'
 import { confirmAlert } from 'react-confirm-alert';
 import { phoneDelete } from '../services/phone';
+import { phoneEdit } from '../services/phone';
 import { toast } from 'react-toastify';
 
 class PhoneView extends Component {
@@ -66,6 +67,24 @@ class PhoneView extends Component {
 
   }
 
+  handleEditPhoneSubmission = (data) => {
+    const { title, description, price,
+      photo, manufacturer, ram, screen, color, _id } = data;
+
+    phoneEdit(_id, {
+      title, description, price, photo,
+      manufacturer, ram, screen, color
+    })
+      .then((phone) => {
+        this.setState({ phone, editing: false });
+      })
+      .catch((error) => {
+        alert('There was an error creating your phone.');
+        console.log(error);
+      })
+
+  }
+
   addToFavourites = () => {
     toast.success('Added to favouries')
   }
@@ -80,7 +99,7 @@ class PhoneView extends Component {
         {this.state.editing &&
           <EditPopover
             phone={this.state.phone}
-            triggerEditPopover={this.triggerEditPopover}
+            handleEditPhoneSubmission={data => this.handleEditPhoneSubmission(data)}
             editingActive={this.state.editing} />}
 
         {this.state.phone && (
