@@ -10,4 +10,17 @@
     margin: auto;
     margin-bottom: 5px;
   }
+
+  label {
+    display: inline-block;
+    margin-bottom: 6px;
+    margin-top: 12px;
+  }
+}
+
+.form-error {
+  color: red;
+  text-align: left;
+  font-size: 15px;
+  margin-top: 4px;
 }

@@ -100,7 +100,9 @@ class PhoneView extends Component {
           <EditPopover
             phone={this.state.phone}
             handleEditPhoneSubmission={data => this.handleEditPhoneSubmission(data)}
-            editingActive={this.state.editing} />}
+            editingActive={this.state.editing}
+            triggerEditPopover={this.triggerEditPopover} />}
+
 
         {this.state.phone && (
           <section className='individual-phone-section'>

@@ -1,4 +1,4 @@
-export const defaultPhoneFormData = {
+export const placeHolderValues = {
   title: 'Insert telephone name here...',
   description: 'Tell us about your phone',
   photo: null,
@@ -7,4 +7,14 @@ export const defaultPhoneFormData = {
   color: 'And the color?',
   manufacturer: 'Who made it?',
   price: 'How much did you spend on this bad boy?'
+};
+
+export const initialFormValues = {
+  title: '',
+  description: '',
+  screen: '',
+  ram: '',
+  color: '',
+  manufacturer: '',
+  price: ''
 };
