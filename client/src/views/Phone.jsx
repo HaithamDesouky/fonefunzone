@@ -109,7 +109,7 @@ class PhoneView extends Component {
             <h1>{this.state.phone.title}</h1>
             <img src={this.state.phone.photo ? this.state.phone.photo : mysteryPhone} alt={this.state.phone.title}>
             </img>
-            <p class='phone-descriptions'>
+            <p class='phone-description'>
               {this.state.phone.description}
             </p>
             <div className="action-icons"><IconButton aria-label="add to favorites" onClick={this.addToFavourites}>
