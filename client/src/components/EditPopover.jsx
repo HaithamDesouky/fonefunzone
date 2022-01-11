@@ -1,18 +1,14 @@
 import React from 'react';
 import PhoneForm from './PhoneForm/PhoneForm'
+import Modal from './../components/Common/Modal'
 
 const EditPopover = ({ editingActive, phone, handleEditPhoneSubmission, triggerEditPopover }) => {
-  return (
-    <div class="modal-background">
-      <div class="edit-phone-dialog">
-        <PhoneForm
-          data={phone}
-          triggerEditPopover={triggerEditPopover}
-          editingActive={editingActive}
-          editPhone={data => handleEditPhoneSubmission(data)} />
-      </div>
-    </div>
-  );
-};
-
-export default EditPopover;
+  return <Modal>
+    <PhoneForm
+      data={phone}
+      triggerEditPopover={triggerEditPopover}
+      editingActive={editingActive}
+      editPhone={data => handleEditPhoneSubmission(data)} />
+  </Modal>
+}
+export default EditPopover
