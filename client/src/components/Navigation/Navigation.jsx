@@ -25,7 +25,7 @@ const Navbar = () => {
             />
           )) || (
             <MenuIcon
-              style={{ color: '#d7b065' }}
+              style={{ color: '$tertiary-gold-color' }}
               onClick={navBarClick}
               className="nav-toggle"
             />

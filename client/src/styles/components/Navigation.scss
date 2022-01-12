@@ -1,3 +1,5 @@
+@import './../../styles/variables.scss';
+
 .navbar {
   height: 80px;
   display: flex;
@@ -82,7 +84,7 @@
 
 .nav-link:hover {
   background-color: black;
-  color: #d7b065;
+  color: $tertiary-gold-color;
   border-radius: 4px;
   transition: all 0.2s ease-out;
 }
@@ -165,8 +167,8 @@
   }
 
   .nav-links-mobile:hover {
-    background: #fff;
-    color: #d7b065;
+    background: $primary-white;
+    color: $tertiary-gold-color;
     transition: 250ms;
   }
 }
