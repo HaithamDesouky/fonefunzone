@@ -5,10 +5,10 @@ export default function index() {
   return (
     <div id="loading-screen">
       <h4>Loading...</h4>
-      <div class="fancy-spinner">
-        <div class="ring"></div>
-        <div class="ring"></div>
-        <div class="dot"></div>
+      <div className="fancy-spinner">
+        <div className="ring"></div>
+        <div className="ring"></div>
+        <div className="dot"></div>
       </div>
     </div>
   );

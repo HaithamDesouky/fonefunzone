@@ -56,7 +56,7 @@ const PhoneForm = ({
   };
 
   return (
-    <form class="phone-form" onSubmit={formik.handleSubmit}>
+    <form className="phone-form" onSubmit={formik.handleSubmit}>
       <label htmlFor="input-title">Title</label>
       <TextField
         variant="standard"

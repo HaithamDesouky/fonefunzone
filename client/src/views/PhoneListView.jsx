@@ -28,11 +28,11 @@ class PhoneListView extends Component {
       <React.Fragment>
         {(!this.state.loading && (
           <>
-            <section class="community-section">
-              <div class="community-header">
+            <section className="community-section">
+              <div className="community-header">
                 <h2>Our Phones</h2>
               </div>
-              <div class="phone-container">
+              <div className="phone-container">
                 <PhoneList phones={this.state.phones} expandDisabled={true} />
               </div>
             </section></>

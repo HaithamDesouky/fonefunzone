@@ -36,11 +36,11 @@ class HomeView extends Component {
                 I also apologise for the pixelated background image, it was the best I could find in such short time!
               </h3>
             </div>
-          </section><section class="community-section">
-              <div class="community-header">
+          </section><section className="community-section">
+              <div className="community-header">
                 <h2>Our Phones</h2>
               </div>
-              <div class="phone-container">
+              <div className="phone-container">
                 <PhoneList phones={this.state.phones} expandDisabled={true} />
               </div>
             </section></>

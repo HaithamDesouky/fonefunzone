@@ -2,8 +2,8 @@ import React from 'react';
 
 const Modal = ({ children }) => {
   return (
-    <div class="modal-background">
-      <div class="pop-up-dialog">
+    <div className="modal-background">
+      <div className="pop-up-dialog">
         {children}
       </div>
     </div>

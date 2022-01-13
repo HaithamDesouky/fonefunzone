@@ -3,7 +3,7 @@ import PhoneCard from '../Card/PhoneCard'
 
 const PhoneList = ({ phones }) => {
   return (
-    <div class="phone-list-container">
+    <div className="phone-list-container">
       <ul>
         {phones && phones.map((phone) => (
           <li key={phone._id}>

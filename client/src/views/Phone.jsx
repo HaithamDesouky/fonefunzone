@@ -1,48 +1,43 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import { loadPhone } from '../services/phone';
 import EditPopover from '../components/EditPopover'
 import * as React from 'react';
-import IconButton from '@mui/material/IconButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import mysteryPhone from './../images/mystery.png'
 import { confirmAlert } from 'react-confirm-alert';
 import { phoneDelete } from '../services/phone';
 import { phoneEdit } from '../services/phone';
-import { toast } from 'react-toastify';
+import { useHistory } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+import IndividualPhone from './../components/Common/IndividualPhone'
 
-class PhoneView extends Component {
-  constructor() {
-    super();
-    this.state = {
-      phone: null,
-      editing: false,
-      expanded: false
-    };
+
+
+const PhoneView = () => {
+  const [currentPhone, setPhone] = useState(null)
+  const [currentlyEditing, setEditing] = useState(false)
+  const history = useHistory();
+  const params = useParams()
+
+  useEffect(() => {
+    if (!currentPhone) {
+      loadPhone(params.id)
+        .then((phone) => {
+          setPhone(phone);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+  )
+
+  const triggerEditPopover = () => {
+    setEditing(!currentlyEditing);
   }
 
-  componentDidMount() {
-    loadPhone(this.props.match.params.id)
-      .then((phone) => {
-        this.setState({ phone });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  handleExpandClick = () => {
-    this.setState({ expanded: !this.state.expanded });
-  };
-
-  triggerEditPopover = () => {
-    this.setState({ editing: !this.state.editing });
-  }
-
-  deletePhone = (id) => {
+  const deletePhone = (id) => {
     phoneDelete(id)
       .then((phone) => {
-        this.props.history.push({ pathname: `/` });
+        history.push({ pathname: `/` });
       })
       .catch((error) => {
         alert('There was an error creating phone.');
@@ -50,14 +45,14 @@ class PhoneView extends Component {
       });
   }
 
-  handleDelete = (id) => {
+  const handleDelete = (id) => {
     confirmAlert({
       title: 'Confirm',
       message: 'Are you sure you want to delete this phone?',
       buttons: [
         {
           label: 'Yes',
-          onClick: () => this.deletePhone(id)
+          onClick: () => deletePhone(id)
         },
         {
           label: 'No',
@@ -67,7 +62,7 @@ class PhoneView extends Component {
 
   }
 
-  handleEditPhoneSubmission = (data) => {
+  const handleEditPhoneSubmission = (data) => {
     const { title, description, price,
       photo, manufacturer, ram, screen, color, _id } = data;
 
@@ -76,7 +71,8 @@ class PhoneView extends Component {
       manufacturer, ram, screen, color
     })
       .then((phone) => {
-        this.setState({ phone, editing: false });
+        setPhone(phone)
+        setEditing(false);
       })
       .catch((error) => {
         alert('There was an error creating your phone.');
@@ -85,71 +81,22 @@ class PhoneView extends Component {
 
   }
 
-  addToFavourites = () => {
-    toast.success('Added to favouries')
-  }
 
-  share = () => {
-    toast.success('Just imagine you shared it :)')
-  }
-
-  render() {
-    return (
-      <div className="individual-phone-section">
-        {this.state.editing &&
-          <EditPopover
-            phone={this.state.phone}
-            handleEditPhoneSubmission={data => this.handleEditPhoneSubmission(data)}
-            editingActive={this.state.editing}
-            triggerEditPopover={this.triggerEditPopover} />}
+  return (
+    <div className="individual-phone-section">
+      {currentlyEditing &&
+        <EditPopover
+          phone={currentPhone}
+          handleEditPhoneSubmission={data => handleEditPhoneSubmission(data)}
+          editingActive={currentlyEditing}
+          triggerEditPopover={triggerEditPopover} />}
 
 
-        {this.state.phone && (
-          <section className='individual-phone-section'>
-            <h1>{this.state.phone.title}</h1>
-            <img src={this.state.phone.photo ? this.state.phone.photo : mysteryPhone} alt={this.state.phone.title}>
-            </img>
-            <p class='phone-description'>
-              {this.state.phone.description}
-            </p>
-            <div className="action-icons"><IconButton aria-label="add to favorites" onClick={this.addToFavourites}>
-              <FavoriteIcon />
-            </IconButton>
-              <IconButton aria-label="share" onClick={this.share}>
-                <ShareIcon />
-              </IconButton>
-            </div>
-            <div class="phone-details">
-              <p >Price:</p> {this.state.phone.price}
-              <span >
-              </span>
-            </div>
-            <div class="phone-details">
-              <p >
-                Ram:
-              </p>
-              <span >
-                {this.state.phone.ram}
-              </span></div>
-            <div class="phone-details"><p >
-              Color:
-            </p>
-              <span >
-                {this.state.phone.color}
-              </span></div>
-            <div class="phone-details"><p>
-              Manufacturer:
-            </p>
-              <span >
-                {this.state.phone.manufacturer}
-              </span></div>
-            <button className='primary-button' onClick={this.triggerEditPopover}>Edit Phone</button>
-            <button className='warning-button' onClick={() => this.handleDelete(this.state.phone._id)}>Delete Phone</button>
-          </section>
-        )}
-      </div>
-    );
-  }
+      {currentPhone && (
+        <IndividualPhone phone={currentPhone} editing={currentlyEditing} triggerEditPopover={triggerEditPopover} handleDelete={handleDelete} />
+      )}
+    </div>
+  );
 }
 
 export default PhoneView;
