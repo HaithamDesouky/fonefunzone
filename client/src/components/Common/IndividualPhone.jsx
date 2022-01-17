@@ -13,8 +13,8 @@ const IndividualPhone = ({ phone, triggerEditPopover, handleDelete }) => {
     toast.success('Just imagine you shared it :)')
   }
 
-  return (
-    <section className='individual-phone-section'>
+  return ((phone
+    && (<section className='individual-phone-section'>
       <h1>{phone.title}</h1>
       <img src={phone.photo ? phone.photo : mysteryPhone} alt={phone.title}>
       </img>
@@ -52,9 +52,10 @@ const IndividualPhone = ({ phone, triggerEditPopover, handleDelete }) => {
         <span >
           {phone.manufacturer}
         </span></div>
-      <button className='primary-button' onClick={triggerEditPopover}>Edit Phone</button>
-      <button className='warning-button' onClick={() => handleDelete(phone._id)}>Delete Phone</button>
-    </section>)
+      <button className='primary-button' label='edit phone' onClick={triggerEditPopover}>Edit Phone</button>
+      <button className='warning-button' lable='delete' onClick={() => handleDelete(phone._id)}>Delete Phone</button>
+    </section>))
+    || (<h1> Sorry there has been a problem loading your phone </h1>))
 
 }
 
